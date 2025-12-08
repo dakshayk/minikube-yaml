@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeployments
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      myname: sai
+
+
+  template:
+    metadata:
+      labels:
+        myname: sai
+
+    spec:
+      containers:
+        - name: c00
+          image: ubuntu
+          command: ["/bin/bash", "-c", "while true; do echo hello-akki; sleep 5; done"]
