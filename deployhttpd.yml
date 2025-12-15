@@ -1,0 +1,25 @@
+kind: Deployment     #object type
+apiVersion: apps/v1
+metadata: 
+  name: mydeployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      myname: sai
+ 
+
+
+  template:
+    metadata:
+      labels:
+        myname: sai
+
+
+    spec:
+      containers:
+       - name: c00
+         image: httpd
+         ports: 
+          - containerPort: 80
+

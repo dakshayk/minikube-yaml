@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demoservice
+spec:
+  ports:
+  - port: 300
+    targetPort: 80
+
+  selector:
+    myname: sai
+
+  type: NodePort
+

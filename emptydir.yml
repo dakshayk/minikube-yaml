@@ -1,0 +1,27 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: c1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-akshay; sleep 1000; done" ]
+      volumeMounts:
+        - name: podvol
+          mountPath: /tmp/c1dir   # saying c1dir go and connect to podvol so what is podval it is a name given to volume which volume emptydir volume
+
+
+
+
+    - name: c2
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-akshay; sleep 1000; done" ]
+      volumeMounts:
+        - name: podvol
+          mountPath: /tmp/c2dir     # saying c2dir go and connect to podvol so what is podval it is a name given to volume which volume emptydir volume
+
+  volumes:
+    - name: podvol
+      emptyDir: {}
+

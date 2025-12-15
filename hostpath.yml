@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mypod
+spec:
+  containers:
+    - name: c1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-akshay; sleep 100; done" ]
+      volumeMounts:
+        - name: testvolume
+          mountPath: /tmp/contdir   #cont1dir in cont c1 mapping to testvolume, so testvolume is a name to volume type hostpath, so hostpath has dir hostdir that 
+
+
+  volumes:
+    - name: testvolume
+      hostPath:
+       path: /tmp/hostdir
+
