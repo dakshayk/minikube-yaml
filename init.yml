@@ -1,0 +1,30 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mypod
+spec:
+
+  initContainers:
+    - name: c1
+      image: ubuntu
+      command: ["/bin/bash", "-c", "echo hello-akki > /tmp/c1dir/saifile;  sleep 10"]
+
+      volumeMounts:
+        - name: myvol
+          mountPath: "/tmp/c1dir"
+
+
+
+  containers:
+    - name: c2
+      image: ubuntu
+      command: ["/bin/bash", "-c", "sleep infinity"]
+
+      volumeMounts:
+        - name: myvol
+          mountPath: "/tmp/c2dir"
+
+
+  volumes:
+    - name: myvol
+      emptyDir: {}

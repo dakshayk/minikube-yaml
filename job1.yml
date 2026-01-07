@@ -1,0 +1,13 @@
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: myjob
+spec:
+  template:                           #if you use job object in YAML then jobobject  will created by pod and must pod have a template 
+    spec:
+      containers:
+
+         - name: mycont
+           image: ubuntu
+           command: ["/bin/bash", "-c", "echo Hello-akshay; sleep 15" ]
+      restartPolicy: Never

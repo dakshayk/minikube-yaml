@@ -1,0 +1,16 @@
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: myjob
+spec:
+  schedule: "* * * * *"    #everymin pod will create it will execute task in container then container will deleted not pod we need to delete pod manually"
+  jobTemplate:
+    spec:
+      template:
+         spec:
+            containers:
+              - name: mycont
+                image: ubuntu
+                command: ["/bin/bash", "-c", "echo Hello-akshay; sleep 15" ]
+            restartPolicy: Never
+
